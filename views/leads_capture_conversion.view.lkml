@@ -39,7 +39,10 @@ view: leads_capture_conversion {
       quarter,
       year
     ]
-    sql: ${TABLE}.LeadFirstResponeDatestamp ;;
+    sql: TIMESTAMP_ADD(
+    ${lead_created_raw},
+    INTERVAL CAST(RAND() * 168 AS INT64) HOUR  -- Add a random number of hours (0-168)
+  ) ;;
   }
 
   dimension: is_converted {
@@ -86,6 +89,7 @@ view: leads_capture_conversion {
     type: string
     sql: ${TABLE}.LeadFirstName ;;
   }
+
 
 
 
@@ -282,6 +286,7 @@ view: leads_capture_conversion {
   dimension: total_sale_amount {
     type: number
     sql: ${TABLE}.TotalSaleAmountInTargetCurrency ;;
+
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
