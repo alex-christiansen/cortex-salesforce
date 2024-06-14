@@ -1,5 +1,5 @@
 - dashboard: opportunity_trends__pipeline_details
-  title: Opportunity Trends & Pipeline Details
+  title: Opportunity Trends & Pipeline Details (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''

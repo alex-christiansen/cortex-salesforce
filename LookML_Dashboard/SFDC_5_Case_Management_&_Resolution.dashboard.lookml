@@ -1,5 +1,5 @@
 - dashboard: case_management__resolution
-  title: Case Management & Resolution
+  title: Case Management & Resolution (Unvalidated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -823,7 +823,7 @@
   - name: Case Created Date
     title: Case Created Date
     type: field_filter
-    default_value: this year to second
+    default_value: 2021
     allow_multiple_values: true
     required: false
     ui_config:

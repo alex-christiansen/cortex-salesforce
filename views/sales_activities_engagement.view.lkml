@@ -38,9 +38,48 @@ view: sales_activities_engagement {
     sql: CONCAT(${activity_id},${target_currency}) ;;
   }
 
-  dimension: opportunity_owner {
+  dimension: opportunity_owner_original {
     type: string
     sql: ${TABLE}.OpportunityOwnerName ;;
+  }
+
+  dimension: opportunity_owner {
+    type: string
+    sql:  CASE
+    WHEN ${lead_owner_id} = '0058a00000LiM2BAAV' THEN 'Michael Moore'
+    WHEN ${lead_owner_id} = '0058a00000LviwIAAR' THEN 'Daniel Anderson'
+    WHEN ${lead_owner_id} = '0058a00000LvkJNAAZ' THEN 'Jane Anderson'
+    WHEN ${lead_owner_id} = '0058a00000LvkJSAAZ' THEN 'Harper Anderson'
+    WHEN ${lead_owner_id} = '0058a00000LvkJXAAZ' THEN 'Daniel Garcia'
+    WHEN ${lead_owner_id} = '0058a00000LvkJcAAJ' THEN 'William Brown'
+    WHEN ${lead_owner_id} = '0058a00000LvkJhAAJ' THEN 'Michael Smith'
+    WHEN ${lead_owner_id} = '0058a00000LvkJmAAJ' THEN 'Joseph Garcia'
+    WHEN ${lead_owner_id} = '0058a00000LvvtRAAR' THEN 'James Williams'
+    WHEN ${lead_owner_id} = '0058a00000LvvtWAAR' THEN 'Samuel Thomas'
+    WHEN ${lead_owner_id} = '0058a00000LvvtXAAR' THEN 'David Thompson'
+    WHEN ${lead_owner_id} = '0058a00000LvvtYAAR' THEN 'Ava Brown'
+    WHEN ${lead_owner_id} = '0058a00000LvvtZAAR' THEN 'Mia Davis'
+    WHEN ${lead_owner_id} = '0058a00000LvvtaAAB' THEN 'Amelia Williams'
+    WHEN ${lead_owner_id} = '0058a00000LvvtbAAB' THEN 'James Thomas'
+    WHEN ${lead_owner_id} = '0058a00000LvvtcAAB' THEN 'Emily Wilson'
+    WHEN ${lead_owner_id} = '0058a00000LvvtdAAB' THEN 'Daniel Brown'
+    WHEN ${lead_owner_id} = '0058a00000LvvteAAB' THEN 'David Taylor'
+    WHEN ${lead_owner_id} = '0058a00000LvvtfAAB' THEN 'Evelyn White'
+    WHEN ${lead_owner_id} = '0058a00000LvvtgAAB' THEN 'Benjamin Rodriguez'
+    WHEN ${lead_owner_id} = '0058a00000LvvtlAAB' THEN 'Matthew Johnson'
+    WHEN ${lead_owner_id} = '0058a00000LvvtvAAB' THEN 'Ava Miller'
+    WHEN ${lead_owner_id} = '0058a00000LvvtwAAB' THEN 'Ava Thomas'
+    WHEN ${lead_owner_id} = '0058a00000LvvtxAAB' THEN 'Isabella Anderson'
+    WHEN ${lead_owner_id} = '0058a00000LvvtyAAB' THEN 'Evelyn Brown'
+    WHEN ${lead_owner_id} = '0058a00000LvvtzAAB' THEN 'John Thomas'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu0AAB' THEN 'Michael Moore'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu1AAB' THEN 'Ava Moore'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu2AAB' THEN 'William Jones'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu3AAB' THEN 'David Hernandez'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu4AAB' THEN 'Matthew Thompson'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu5AAB' THEN 'James Anderson'
+    WHEN ${lead_owner_id} = '0058a00000Lvvu6AAB' THEN 'Ava Thomas'
+    ELSE 'Unknown' END;;
   }
 
 
@@ -309,9 +348,50 @@ dimension: is_closed_flag {
     sql:${TABLE}.LeadOwnerId ;;
   }
 
-dimension: lead_owner {
+dimension: lead_owner_original {
   type: string
   sql: ${TABLE}.LeadOwnerName ;;
+}
+
+dimension: lead_owner {
+  type: string
+  sql:   CASE
+    WHEN ${opportunity_owner_id} = '0058a00000LiM2BAAV' THEN 'Michael Moore'
+    WHEN ${opportunity_owner_id} = '0058a00000LviwIAAR' THEN 'Daniel Anderson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvkJNAAZ' THEN 'Jane Anderson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvkJSAAZ' THEN 'Harper Anderson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvkJXAAZ' THEN 'Daniel Garcia'
+    WHEN ${opportunity_owner_id} = '0058a00000LvkJcAAJ' THEN 'William Brown'
+    WHEN ${opportunity_owner_id} = '0058a00000LvkJhAAJ' THEN 'Michael Smith'
+    WHEN ${opportunity_owner_id} = '0058a00000LvkJmAAJ' THEN 'Joseph Garcia'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtRAAR' THEN 'James Williams'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtWAAR' THEN 'Samuel Thomas'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtXAAR' THEN 'David Thompson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtYAAR' THEN 'Ava Brown'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtZAAR' THEN 'Mia Davis'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtaAAB' THEN 'Amelia Williams'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtbAAB' THEN 'James Thomas'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtcAAB' THEN 'Emily Wilson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtdAAB' THEN 'Daniel Brown'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvteAAB' THEN 'David Taylor'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtfAAB' THEN 'Evelyn White'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtgAAB' THEN 'Benjamin Rodriguez'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtlAAB' THEN 'Matthew Johnson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtvAAB' THEN 'Ava Miller'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtwAAB' THEN 'Ava Thomas'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtxAAB' THEN 'Isabella Anderson'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtyAAB' THEN 'Evelyn Brown'
+    WHEN ${opportunity_owner_id} = '0058a00000LvvtzAAB' THEN 'John Thomas'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu0AAB' THEN 'Michael Moore'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu1AAB' THEN 'Ava Moore'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu2AAB' THEN 'William Jones'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu3AAB' THEN 'David Hernandez'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu4AAB' THEN 'Matthew Thompson'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu5AAB' THEN 'James Anderson'
+    WHEN ${opportunity_owner_id} = '0058a00000Lvvu6AAB' THEN 'Ava Thomas'
+    ELSE 'Unknown' -- Optional: Handle cases where the ID is not found
+  END
+ ;;
 }
 
 dimension: lead_country {
@@ -573,13 +653,53 @@ dimension: lead_industry {
   }
 
 
-  dimension: sales_rep_owner {
+  dimension: sales_rep_owner_original {
     type: string
     sql:  CASE
          WHEN ${opportunity_id} IS NOT NULL THEN ${TABLE}.OpportunityOwnerName
          WHEN ${lead_id} IS NOT NULL AND ${opportunity_id} IS NULL THEN ${TABLE}.LeadOwnerName
          ELSE ${TABLE}.ActivityOwnerName
        END;;
+  }
+
+  dimension: sales_rep_owner {
+    type: string
+    sql:
+  CASE
+    WHEN ${sales_rep_owner_id} = '0058a00000LiM2BAAV' THEN 'Michael Moore'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvkJNAAZ' THEN 'Daniel Anderson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvkJSAAZ' THEN 'Jane Anderson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvkJXAAZ' THEN 'Harper Anderson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvkJcAAJ' THEN 'Daniel Garcia'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvkJhAAJ' THEN 'William Brown'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvkJmAAJ' THEN 'Michael Smith'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtRAAR' THEN 'Joseph Garcia'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtWAAR' THEN 'James Williams'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtXAAR' THEN 'Samuel Thomas'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtYAAR' THEN 'David Thompson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtZAAR' THEN 'Ava Brown'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtaAAB' THEN 'Mia Davis'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtbAAB' THEN 'Amelia Williams'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtcAAB' THEN 'James Thomas'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtdAAB' THEN 'Emily Wilson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvteAAB' THEN 'Daniel Brown'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtfAAB' THEN 'David Taylor'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtgAAB' THEN 'Evelyn White'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtlAAB' THEN 'Benjamin Rodriguez'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtvAAB' THEN 'Matthew Johnson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtwAAB' THEN 'Ava Miller'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtxAAB' THEN 'Ava Thomas'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtyAAB' THEN 'Isabella Anderson'
+    WHEN ${sales_rep_owner_id} = '0058a00000LvvtzAAB' THEN 'Evelyn Brown'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu0AAB' THEN 'John Thomas'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu1AAB' THEN 'Michael Moore'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu2AAB' THEN 'Ava Moore'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu3AAB' THEN 'William Jones'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu4AAB' THEN 'David Hernandez'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu5AAB' THEN 'Matthew Thompson'
+    WHEN ${sales_rep_owner_id} = '0058a00000Lvvu6AAB' THEN 'James Anderson'
+    ELSE 'Unknown' -- Optional: Handle cases where the ID is not found
+  END ;;
   }
 
   dimension: sales_rep_owner_id {

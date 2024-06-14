@@ -1,5 +1,5 @@
 - dashboard: sales_activities__engagement
-  title: Sales Activities & Engagement
+  title: Sales Activities & Engagement (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
