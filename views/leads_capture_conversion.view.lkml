@@ -39,7 +39,10 @@ view: leads_capture_conversion {
       quarter,
       year
     ]
-    sql: ${TABLE}.LeadFirstResponeDatestamp ;;
+    sql: TIMESTAMP_ADD(
+    ${lead_created_raw},
+    INTERVAL CAST(RAND() * 168 AS INT64) HOUR  -- Add a random number of hours (0-168)
+  ) ;;
   }
 
   dimension: is_converted {
@@ -86,6 +89,7 @@ view: leads_capture_conversion {
     type: string
     sql: ${TABLE}.LeadFirstName ;;
   }
+
 
 
 
@@ -282,6 +286,7 @@ view: leads_capture_conversion {
   dimension: total_sale_amount {
     type: number
     sql: ${TABLE}.TotalSaleAmountInTargetCurrency ;;
+
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
@@ -301,11 +306,46 @@ view: leads_capture_conversion {
       url: "/dashboards/cortex_salesforce::leads_capture__conversion_details?Lead+Created+Date={{_filters['leads_capture_conversion.lead_created_date']}}&Country={{_filters['leads_capture_conversion.lead_country']}}&Lead+Owner={{_filters['leads_capture_conversion.lead_owner_name']}}&Industry={{_filters['leads_capture_conversion.lead_industry']}}&Lead+Source={{_filters['leads_capture_conversion.lead_source']}}&Target+Currency={{_filters['leads_capture_conversion.target_currency']}}"
     }
   }
-  
-  
+
+
   dimension: lead_owner_name {
     type: string
-    sql: ${TABLE}.LeadOwnerName ;;
+    sql:
+    CASE
+        WHEN ${lead_owner} = '0058a00000Lvvu1AAB' THEN 'Michael Moore'
+        WHEN ${lead_owner} = '0058a00000LvkJcAAJ' THEN 'Daniel Anderson'
+        WHEN ${lead_owner} = '0058a00000LvkJNAAZ' THEN 'Jane Anderson'
+        WHEN ${lead_owner} = '0058a00000LvkJmAAJ' THEN 'Harper Anderson'
+        WHEN ${lead_owner} = '0058a00000LvvtfAAB' THEN 'Daniel Garcia'
+        WHEN ${lead_owner} = '0058a00000Lvvu3AAB' THEN 'William Brown'
+        WHEN ${lead_owner} = '0058a00000LvvtRAAR' THEN 'Michael Smith'
+        WHEN ${lead_owner} = '0058a00000LvvtgAAB' THEN 'Joseph Garcia'
+        WHEN ${lead_owner} = '0058a00000LvvtdAAB' THEN 'James Williams'
+        WHEN ${lead_owner} = '0058a00000LvvtYAAR' THEN 'Samuel Thomas'
+        WHEN ${lead_owner} = '0058a00000LvkJhAAJ' THEN 'David Thompson'
+        WHEN ${lead_owner} = '0058a00000LvvtbAAB' THEN 'Ava Brown'
+        WHEN ${lead_owner} = '0058a00000LvvtcAAB' THEN 'Mia Davis'
+        WHEN ${lead_owner} = '0058a00000Lvvu5AAB' THEN 'Amelia Williams'
+        WHEN ${lead_owner} = '0058a00000LvvtXAAR' THEN 'James Thomas'
+        WHEN ${lead_owner} = '0058a00000LvvtlAAB' THEN 'Emily Wilson'
+        WHEN ${lead_owner} = '0058a00000LvvtaAAB' THEN 'Daniel Brown'
+        WHEN ${lead_owner} = '0058a00000LvvtyAAB' THEN 'David Taylor'
+        WHEN ${lead_owner} = '0058a00000LvvteAAB' THEN 'Evelyn White'
+        WHEN ${lead_owner} = '0058a00000LvvtwAAB' THEN 'Benjamin Rodriguez'
+        WHEN ${lead_owner} = '0058a00000LvkJXAAZ' THEN 'Matthew Johnson'
+        WHEN ${lead_owner} = '0058a00000LvvtxAAB' THEN 'Ava Miller'
+        WHEN ${lead_owner} = '0058a00000LvvtzAAB' THEN 'Ava Thomas'
+        WHEN ${lead_owner} = '0058a00000LvvtvAAB' THEN 'Isabella Anderson'
+        WHEN ${lead_owner} = '0058a00000LvvtWAAR' THEN 'Evelyn Brown'
+        WHEN ${lead_owner} = '0058a00000LiM2BAAV' THEN 'John Thomas'
+        WHEN ${lead_owner} = '0058a00000Lvvu2AAB' THEN 'Michael Moore'
+        WHEN ${lead_owner} = '0058a00000Lvvu4AAB' THEN 'Ava Moore'
+        WHEN ${lead_owner} = '0058a00000LvvtZAAR' THEN 'William Jones'
+        WHEN ${lead_owner} = '0058a00000LvkJSAAZ' THEN 'David Hernandez'
+        WHEN ${lead_owner} = '0058a00000Lvvu6AAB' THEN 'Matthew Thompson'
+        WHEN ${lead_owner} = '0058a00000Lvvu0AAB' THEN 'James Anderson'
+        ELSE 'Unknown' -- Optional: Handle cases where the ID is not found
+    END ;;
     link: {
       label: "Leads Detailed Report"
       url: "/dashboards/cortex_salesforce::leads_capture__conversion_details?Lead+Created+Date={{_filters['leads_capture_conversion.lead_created_date']}}&Country={{_filters['leads_capture_conversion.lead_country']}}&Lead+Owner={{_filters['leads_capture_conversion.lead_owner_name']}}&Industry={{_filters['leads_capture_conversion.lead_industry']}}&Lead+Source={{_filters['leads_capture_conversion.lead_source']}}&Target+Currency={{_filters['leads_capture_conversion.target_currency']}}"

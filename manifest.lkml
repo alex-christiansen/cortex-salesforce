@@ -1,17 +1,17 @@
 
 constant: CONNECTION_NAME {
-  value: "Connection Name"
+  value: "csg_poc_bigquery"
   export: override_required
 }
 
 
 constant: GCP_PROJECT_ID {
-  value: "GCP Project ID"
+  value: "csg-data-platform-poc"
   export: override_required
 }
 
 
 constant: SFDC_DATASET {
-  value: "Reporting Dataset Name"
+  value: "CORTEX_SFDC_REPORTING"
   export: override_required
 }
