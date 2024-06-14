@@ -572,6 +572,7 @@ dimension: lead_industry {
     }
   }
 
+
   dimension: sales_rep_owner {
     type: string
     sql:  CASE

@@ -1592,7 +1592,7 @@
   - name: Created Date
     title: Created Date
     type: field_filter
-    default_value: this year to second
+    default_value: 2021
     allow_multiple_values: true
     required: false
     ui_config:
