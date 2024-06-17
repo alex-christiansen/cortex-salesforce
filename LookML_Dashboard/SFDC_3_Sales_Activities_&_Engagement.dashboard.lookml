@@ -1,5 +1,5 @@
 - dashboard: sales_activities__engagement
-  title: Sales Activities & Engagement
+  title: Sales Activities & Engagement (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -1592,7 +1592,7 @@
   - name: Created Date
     title: Created Date
     type: field_filter
-    default_value: this year to second
+    default_value: 2021
     allow_multiple_values: true
     required: false
     ui_config:

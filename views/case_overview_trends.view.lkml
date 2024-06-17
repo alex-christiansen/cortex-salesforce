@@ -349,10 +349,42 @@ dimension: agent_is_assigned {
   #   sql: ${TABLE}.UserLastName ;;
   # }
 
-  dimension: case_owner_name {
+  dimension: case_owner_name_original {
     type: string
     sql: ${TABLE}.CaseOwnerName ;;
   }
+
+  dimension: case_owner_name {
+    type: string
+    sql: CASE
+          WHEN RIGHT(${case_number},2) BETWEEN '01' AND '04' THEN 'Michael Moore'
+          WHEN RIGHT(${case_number},2) BETWEEN '05' AND '08' THEN 'Daniel Anderson'
+          WHEN RIGHT(${case_number},2) BETWEEN '08' AND '11' THEN 'Jane Anderson'
+          WHEN RIGHT(${case_number},2) BETWEEN '12' AND '15' THEN 'Harper Anderson'
+          WHEN RIGHT(${case_number},2) BETWEEN '16' AND '19' THEN 'Daniel Garcia'
+          WHEN RIGHT(${case_number},2) BETWEEN '20' AND '23' THEN 'William Brown'
+          WHEN RIGHT(${case_number},2) BETWEEN '24' AND '27' THEN 'Michael Smith'
+          WHEN RIGHT(${case_number},2) BETWEEN '28' AND '31' THEN 'Joseph Garcia'
+          WHEN RIGHT(${case_number},2) BETWEEN '32' AND '35' THEN 'James Williams'
+          WHEN RIGHT(${case_number},2) BETWEEN '36' AND '39' THEN 'Samuel Thomas'
+          WHEN RIGHT(${case_number},2) BETWEEN '40' AND '43' THEN 'David Thompson'
+          WHEN RIGHT(${case_number},2) BETWEEN '44' AND '47' THEN 'Ava Brown'
+          WHEN RIGHT(${case_number},2) BETWEEN '48' AND '51' THEN 'Mia Davis'
+          WHEN RIGHT(${case_number},2) BETWEEN '52' AND '55' THEN 'Amelia Williams'
+          WHEN RIGHT(${case_number},2) BETWEEN '56' AND '59' THEN 'James Thomas'
+          WHEN RIGHT(${case_number},2) BETWEEN '60' AND '63' THEN 'Emily Wilson'
+          WHEN RIGHT(${case_number},2) BETWEEN '64' AND '67' THEN 'Daniel Brown'
+          WHEN RIGHT(${case_number},2) BETWEEN '68' AND '71' THEN 'David Taylor'
+          WHEN RIGHT(${case_number},2) BETWEEN '72' AND '75' THEN 'Evelyn White'
+          WHEN RIGHT(${case_number},2) BETWEEN '76' AND '79' THEN 'Benjamin Rodriguez'
+          WHEN RIGHT(${case_number},2) BETWEEN '80' AND '83' THEN 'Matthew Johnson'
+          WHEN RIGHT(${case_number},2) BETWEEN '84' AND '87' THEN 'Ava Thomas'
+          WHEN RIGHT(${case_number},2) BETWEEN '88' AND '91' THEN 'John Thomas'
+          WHEN RIGHT(${case_number},2) BETWEEN '92' AND '95' THEN 'Matthew Thompson'
+          WHEN RIGHT(${case_number},2) BETWEEN '96' AND '99' THEN 'David Hernandez'
+          ELSE 'Unknown' END;;
+  }
+
 
   # dimension: user_type {
   #   type: string

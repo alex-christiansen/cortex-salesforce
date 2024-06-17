@@ -1,5 +1,5 @@
 - dashboard: accounts_with_cases
-  title: Accounts with Cases
+  title: Accounts with Cases (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -622,7 +622,7 @@
   - name: Case Created Date
     title: Case Created Date
     type: field_filter
-    default_value: this year to second
+    default_value: 2022
     allow_multiple_values: true
     required: false
     ui_config:

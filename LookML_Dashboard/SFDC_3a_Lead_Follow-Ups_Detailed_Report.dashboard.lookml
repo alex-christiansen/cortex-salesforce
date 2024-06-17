@@ -1,5 +1,5 @@
 - dashboard: sales_activities__engagement_lead_followups_details
-  title: Sales Activities & Engagement (Lead Follow-Ups) Details
+  title: Sales Activities & Engagement (Lead Follow-Ups) Details (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -74,7 +74,7 @@
   - name: Lead Created Date
     title: Lead Created Date
     type: field_filter
-    default_value: this year to second
+    default_value: 2021
     allow_multiple_values: true
     required: false
     ui_config:
