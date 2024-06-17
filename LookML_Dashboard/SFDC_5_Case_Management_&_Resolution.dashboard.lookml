@@ -1,5 +1,5 @@
 - dashboard: case_management__resolution
-  title: Case Management & Resolution (Unvalidated)
+  title: Case Management & Resolution (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''

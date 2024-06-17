@@ -1,5 +1,5 @@
 - dashboard: leads_capture__conversion_details
-  title: Leads Capture & Conversion Details (Validated))
+  title: Leads Capture & Conversion Details (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''

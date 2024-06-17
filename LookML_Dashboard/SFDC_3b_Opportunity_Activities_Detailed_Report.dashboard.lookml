@@ -1,5 +1,5 @@
 - dashboard: sales_activities__engagement_opportunity_activities_details
-  title: Sales Activities & Engagement (Opportunity Activities) Details (Unvalidated)
+  title: Sales Activities & Engagement (Opportunity Activities) Details (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''

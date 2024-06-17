@@ -1,5 +1,5 @@
 - dashboard: case_overview__trends
-  title: Case Overview & Trends (Unvalidated)
+  title: Case Overview & Trends (Validated)
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
