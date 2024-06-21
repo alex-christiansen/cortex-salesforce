@@ -4,12 +4,9 @@
 connection: "@{CONNECTION_NAME}"
 
 # include all the views
-include: "/views/**/*.view"
-
-
-
-# Datagroups define a caching policy for an Explore. To learn more,
-# use the Quick Help panel on the right to see documentation.
+include: "/LookML_Dashboard/*.dashboard.lookml"
+include: "/salesforce/*.view.lkml"
+include: "/oracle_fusion/*.view.lkml"
 
 datagroup: cortex_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -18,37 +15,15 @@ datagroup: cortex_default_datagroup {
 
 persist_with: cortex_default_datagroup
 
-# Explores allow you to join together different views (database tables) based on the
-# relationships between fields. By joining a view into an Explore, you make those
-# fields available to users for data analysis.
-# Explores should be purpose-built for specific use cases.
-
-# To see the Explore you’re building, navigate to the Explore menu and select an Explore under "Cortex Salesforce"
-
-# To create more sophisticated Explores that involve multiple views, you can use the join parameter.
-# Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
-# Each joined view also needs to define a primary key.
-
-include: "/LookML_Dashboard/*.dashboard.lookml"
-
-#
-
-
-
 named_value_format: Salesforce_Value_Format {
   value_format: "[>=1000000000]0.00,,,\"B\";[>=1000000]0.00,,\"M\";[>=1000]0.00,\"K\";0.00"
 }
-
-
-
-
 
 explore: case_management{}
 
 explore: opportunity_pipeline {}
 
 explore: leads_capture_conversion {}
-
 
 explore:sales_activities_engagement  {
 join: sales_rep {
@@ -72,7 +47,6 @@ join: sales_rep {
   }
 
   }
-
 
 explore: sales_activities_engagement_opportunity_pipeline {
   join: sales_rep {
@@ -103,5 +77,40 @@ explore: sales_activities_engagement_opportunity_pipeline {
   }
 }
 
+connection: "csg_poc_bigquery"
 
+explore: fusion_customer {}
 
+# explore: fusion_revenue_and_tax {}
+
+# explore: fusion_revenue_renewal {}
+
+explore: fusion_revenue_and_tax {
+  join: customer_bridge {
+    relationship: many_to_one
+    sql_on: ${customer_bridge.fusion_party_id} = ${fusion_revenue_and_tax.partyid} ;;
+    type: left_outer
+  }
+  join: fusion_customer {
+    relationship: many_to_one
+    sql_on: ${fusion_customer.partyid} = ${fusion_revenue_and_tax.partyid} ;;
+  }
+  join: fusion_revenue_renewal {
+    sql_on: ${fusion_revenue_and_tax.accountnumber}=${fusion_revenue_renewal.accountnumber} ;;
+    relationship: many_to_many
+    type: inner
+  }
+}
+
+explore: customer_360 {
+  from: fusion_revenue_renewal
+  view_name: fusion_revenue_renewal
+  # join: customer_bridge {
+  #   sql_on: ${fusion_revenue_renewal.partyid}=${customer_bridge.fusion_party_id} ;;
+  # }
+  # join: opportunity_pipeline {
+  #   sql_on:  ${customer_bridge.salesforce_account_id} = ${opportunity_pipeline.account_id};;
+  #   type: left_outer
+  #   relationship: one_to_many
+  # }
+}
