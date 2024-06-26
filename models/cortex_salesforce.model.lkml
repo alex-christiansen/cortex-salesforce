@@ -103,17 +103,17 @@ explore: fusion_revenue_and_tax {
 }
 
 explore: customer_360 {
-  symmetric_aggregates: no
+  # symmetric_aggregates: no
   from: fusion_revenue_renewal
   view_name: fusion_revenue_renewal
   join: customer_bridge {
     sql_on: ${fusion_revenue_renewal.partyid}=${customer_bridge.fusion_party_id} ;;
     relationship: many_to_one
   }
-  join: opportunity_pipeline {
-    sql_on:  ${customer_bridge.salesforce_account_id} = ${opportunity_pipeline.account_id};;
-    type: left_outer
-    relationship: one_to_many
+  # join: opportunity_pipeline {
+  #   sql_on:  ${customer_bridge.salesforce_account_id} = ${opportunity_pipeline.account_id};;
+  #   type: left_outer
+  #   relationship: one_to_many
 
-  }
+  # }
 }
