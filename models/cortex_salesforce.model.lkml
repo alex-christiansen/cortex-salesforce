@@ -103,6 +103,7 @@ explore: fusion_revenue_and_tax {
 }
 
 explore: customer_360 {
+  symmetric_aggregates: no
   from: fusion_revenue_renewal
   view_name: fusion_revenue_renewal
   join: customer_bridge {
@@ -113,5 +114,6 @@ explore: customer_360 {
     sql_on:  ${customer_bridge.salesforce_account_id} = ${opportunity_pipeline.account_id};;
     type: left_outer
     relationship: one_to_many
+
   }
 }
